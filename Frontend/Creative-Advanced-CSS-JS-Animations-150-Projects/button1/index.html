@@ -10,47 +10,24 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-
     <style>
-      body {
-        background: #f8f8f8;
-      }
-
-      button {
-        font-size: clamp(14px, 2vw, 24px);
-        padding: clamp(8px, 1.5vw, 20px) clamp(16px, 3vw, 32px);
-        border-width: 4px;
-        background-color: transparent;
-        position: relative;
-        overflow: hidden;
-      }
-
-      button::before {
-        background-color: black;
-        content: "";
-
-        display: block;
-        position: absolute;
-        inset: 0;
-        transform: rotate(-90deg);
-        transform-origin: bottom left;
-        background-color: yellow;
-        z-index: -1;
-        transition: transform 1.5s;
-      }
-
-      button:hover::before {
-        transform: rotate(0deg);
-        transform-origin: bottom left;
+      .container {
+        height: 100vh !important;
       }
     </style>
   </head>
-
   <body>
-    <div
-      class="container d-flex min-vh-100 justify-content-center align-items-center"
-    >
-      <button>Hover Me</button>
+    <div class="container">
+      <div class="row h-100">
+        <div class="col h-100">
+          <iframe
+            src="./demo.html"
+            class="w-100 h-100"
+            frameborder="0"
+          ></iframe>
+        </div>
+        <div class="col"></div>
+      </div>
     </div>
 
     <script
