@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      body {
+        background: #f8f8f8;
+      }
+      button {
+        padding: clamp(9px, 1.8vw, 40px) clamp(9px, 4vw, 70px);
+        font-size: clamp(14px, 2vw, 30px);
+        border-style: solid;
+        background-color: transparent;
+        position: relative;
+        color: #351435;
+        overflow: hidden;
+        transition: color 1.3s;
+      }
+
+      button::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: #351435;
+        transform: translateX(-100%);
+        z-index: -1;
+        transition: transform 1.3s;
+      }
+
+      button:hover {
+        color: white;
+      }
+
+      button:hover::before {
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div
+      class="container vh-100 d-flex justify-content-center align-items-center"
+    >
+      <button>Hover Me</button>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

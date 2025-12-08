@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      .container {
+        height: 100vh !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row h-100">
+        <div class="col h-100">
+          <iframe
+            id="preview-pane"
+            class="w-100 h-100"
+            frameborder="0"
+            sandbox="allow-same-origin allow-forms allow-pointer-lock allow-popups allow-scripts"
+          ></iframe>
+        </div>
+        <div class="col h-100">
+          <div id="editor-pane" class="w-100 h-100"></div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.32.3/src-min-noconflict/ace.js"></script>
+
+    <script type="module">
+      import fetchCode from "./fetchCode.js";
+      const editorPane = document.getElementById("editor-pane");
+      const previewPane = document.getElementById("preview-pane");
+
+      // 1. 告诉 Ace 静态文件的 basePath（必须有）
+      ace.config.set(
+        "basePath",
+        "https://cdn.jsdelivr.net/npm/ace-builds@1.32.3/src-min-noconflict"
+      );
+
+      // 2. 创建编辑器实例
+      const editor = ace.edit("editor-pane");
+      editor.setTheme("ace/theme/monokai"); // 主题：monokai
+      editor.session.setMode("ace/mode/html"); // 语法：HTML
+      editor.setOption("fontSize", "14px");
+      editor.setOption("wrap", true); // 自动换行
+
+      const code = await fetchCode();
+      editor.setValue(code, -1); // 第二个参数 -1 = 光标在第一行，不跳到最后
+
+      // 2. 让 iframe 显示同样的内容
+      previewPane.srcdoc = code;
+
+      // 5. 监听编辑器内容变化 → 实时刷新 iframe
+      editor.session.on("change", () => {
+        const val = editor.getValue();
+        previewPane.srcdoc = val;
+      });
+    </script>
+  </body>
+</html>
