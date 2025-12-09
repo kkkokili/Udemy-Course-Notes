@@ -20,21 +20,25 @@
         padding: clamp(9px, 1.8vw, 40px) clamp(9px, 4vw, 70px);
         font-size: clamp(14px, 2vw, 30px);
         border-style: solid;
+        border-width: 3px;
         background-color: transparent;
         position: relative;
         color: #351435;
         overflow: hidden;
-        transition: color 1.3s;
+        transition: color 1s;
       }
 
       button::before {
         content: "";
         position: absolute;
-        inset: 0;
+        top: 0;
+        left: -1px;
+        width: calc(100% + 3px);
+        height: 100%;
         background-color: #351435;
         transform: translateX(-100%);
         z-index: -1;
-        transition: transform 1.3s;
+        transition: transform 1s;
       }
 
       button:hover {
