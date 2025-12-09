@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      body {
+        background: #f8f8f8;
+        /* transform: scale(2); */
+      }
+      button {
+        padding: clamp(9px, 1.8vw, 40px) clamp(9px, 4vw, 70px);
+        font-size: clamp(14px, 2vw, 30px);
+        background-color: transparent;
+        border: solid 5px #262626;
+        position: relative;
+        transition: 1s;
+        z-index: 1;
+      }
+
+      button::before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #262626;
+        content: "";
+        transform: rotateX(90deg);
+        transition: 1s;
+        z-index: -1;
+      }
+
+      button::after {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #262626;
+        content: "";
+        transform: rotateY(90deg);
+        transition: 1s;
+        z-index: -1;
+      }
+
+      button:hover::before {
+        transform: rotateX(0deg);
+      }
+      button:hover::after {
+        transform: rotateY(0deg);
+      }
+      button:hover {
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div
+      class="container d-flex min-vh-100 justify-content-center align-items-center"
+    >
+      <button>Hover Me</button>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
